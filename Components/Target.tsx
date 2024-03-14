@@ -1,13 +1,22 @@
 import React, { useState, FormEvent, ChangeEvent } from "react"; //have transfer value
-const Target = (props: { sendToTarget: number }) => {
-  console.log(props.sendToTarget);
+import { Toast } from "react-toastify/dist/components";
+import { toast } from "react-toastify";
+type TargetPropsType = {
+  getCurrentBalance: () => number;
+  sendToTarget: number;
+};
+const Target = (props: TargetPropsType) => {
+  const [target, setTarget] = useState<number>(0);
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
-  const [target, setTarget] = useState(0);
   const handelsubmit = (event: FormEvent) => {
     event.preventDefault();
-    const TheTarget = { target };
-    console.log(TheTarget);
+    setSubmitted(true);
+
+    toast.success("Target Added");
   };
+  const getCurrentSaving = props.getCurrentBalance();
+  const percentage = ((props.sendToTarget / target) * 100).toFixed(0);
 
   return (
     <div className="my-box">
@@ -20,6 +29,7 @@ const Target = (props: { sendToTarget: number }) => {
             id="Tar1"
             name="Target-Set"
             onChange={(e) => setTarget(parseInt(e.target.value))}
+            value={target}
             placeholder="enter your target"
           />
           <button type="submit" className="inc-btn" id="btn">
@@ -29,9 +39,10 @@ const Target = (props: { sendToTarget: number }) => {
 
         <div className="saving">
           <p>Current Saving: {props.sendToTarget}</p>
-          <p>Target :{target}</p>
+          <p>Target :{submitted && target} </p>
           <p>
-            <progress max={6000} value={0}></progress>
+            <progress max={target} value={props.sendToTarget}></progress>
+            <p>{percentage}%</p>
           </p>
         </div>
       </form>

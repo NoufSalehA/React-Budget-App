@@ -3,6 +3,8 @@ import { FaRegSquarePlus } from "react-icons/fa6";
 import { v4 as uuidv4 } from "uuid";
 import { Toast } from "react-toastify/dist/components";
 import { toast } from "react-toastify";
+//delete button added
+
 type Expense = {
   //defines the types of the array - i can write it in lowercase
 

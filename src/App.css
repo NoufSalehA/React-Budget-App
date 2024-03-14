@@ -115,7 +115,9 @@ label {
 
   border-radius: 10px;
 }
-ul {
+.delete-btn{
+  padding:2px;
+  margin-left:8px;
 }
 .light-paragraph {
   font-size: 10px;

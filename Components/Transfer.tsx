@@ -1,12 +1,11 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { FaRegMoneyBillAlt } from "react-icons/fa";
-
+//Calculate the account balance:Done
 type TransTypes = {
   onGetTrans: (transfer: number) => void;
   GetTotalOfIncomes: number;
   GetTheExpensesTotal: number;
-  TheTargetvalue:number;
-
+  TheTargetvalue: number;
 };
 const Transfer = (props: TransTypes) => {
   const [transfer, setTransfer] = useState(0); //store
@@ -18,13 +17,17 @@ const Transfer = (props: TransTypes) => {
       /*passed to parent*/
     }
   };
-  const currentBalanceValue:number=props.GetTheExpensesTotal-props.GetTheExpensesTotal-props.TheTargetvalue;
+  const currentBalanceValue: number =
+    props.GetTotalOfIncomes -
+    props.GetTheExpensesTotal -
+    props.TheTargetvalue;
+    console.log(currentBalanceValue)
   return (
     <div className="transfer">
       <form onSubmit={handelsubmit} action="action" className="my-transfer">
         <label className="balance">
           Current Balance :{" "}
-          {props.GetTotalOfIncomes - props.GetTheExpensesTotal-props.TheTargetvalue}
+          {currentBalanceValue}
         </label>
         <label className="balance-1">Transfer to Saving Account</label>
         <input

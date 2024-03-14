@@ -39,7 +39,7 @@ const App = () => {
         onGetTrans={transToSaving}
         GetTotalOfIncomes={totalincomeAmount}
         GetTheExpensesTotal={totalExpenses}
-      />
+        TheTargetvalue={sendTarget}/>
       {/*pass it to transfer.tsx*/}
 
       <ToastContainer />

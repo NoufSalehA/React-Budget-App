@@ -18,6 +18,7 @@ const Transfer = (props: TransTypes) => {
       /*passed to parent*/
     }
   };
+  const currentBalanceValue:number=props.GetTheExpensesTotal-props.GetTheExpensesTotal-props.TheTargetvalue;
   return (
     <div className="transfer">
       <form onSubmit={handelsubmit} action="action" className="my-transfer">

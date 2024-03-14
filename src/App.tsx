@@ -30,6 +30,7 @@ const App = () => {
 
     setTotalExpenses(amount);
   };
+  
   return (
     <div className="container">
       <Income onGetIncomesTotals={getIncomesTotals} />

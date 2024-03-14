@@ -3,6 +3,7 @@ import React, { useState, FormEvent } from "react";
 import { FaRegSquarePlus } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import Expense from "./Expense";
 type IncomeTypes = {
   //typescript to avoid errors
   Source: string;
@@ -45,6 +46,12 @@ const Income = (props: IncomePropsType) => {
     setSource("");
     setAmount(0);
     setDate("");
+  };
+  const handelDelete = (incomeId: string) => {
+    setIncomes((prevIncomes) =>
+      prevIncomes.filter((Income) => Income.Id !== incomeId)
+    );
+    toast.error("Deleted");
   };
 
   return (
@@ -105,6 +112,12 @@ const Income = (props: IncomePropsType) => {
               <li key={income.Id}>
                 {" "}
                 {income.Source}:{income.Amount} SR on {income.Date}
+                <button
+                  className="delete-btn"
+                  onClick={() => handelDelete(income.Id)}
+                >
+                  Delete
+                </button>
               </li>
             );
           })

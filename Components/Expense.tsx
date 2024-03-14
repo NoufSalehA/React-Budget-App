@@ -47,6 +47,12 @@ const Expense = (props: ExpensesType) => {
     setExpen(0);
     setDatex("");
   };
+  const handelDeleteExpense = (showExpId: string) => {
+    setExpenses((preExpenses) =>
+      preExpenses.filter((showExp) => showExp.Id !== showExpId)
+    );
+    toast.error("Deleted");
+  };
 
   return (
     <div className="my-box">
@@ -97,6 +103,12 @@ const Expense = (props: ExpensesType) => {
             return (
               <li key={showExp.Id}>
                 {showExp.Source} : {showExp.Amount} SR on {showExp.Date}
+                <button
+                  className="delete-btn"
+                  onClick={() => handelDeleteExpense(showExp.Id)}
+                >
+                  Delete
+                </button>
               </li>
             );
           })

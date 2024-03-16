@@ -127,15 +127,18 @@ label {
 
   display: flex;
   justify-content: center;
-gap:1rem;
+gap:2rem;
+background-color: #ffffff;
+padding: 20px;
 
   
 }
 .my-link{
   text-decoration: none;
   font-size: 1.5rem;
-  color:#040404;
+  color:#000000;
+
 }
 .my-link:hover{
-  color: rgb(247, 247, 243);
+  color: rgb(230, 125, 125);
 }

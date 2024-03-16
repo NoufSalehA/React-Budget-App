@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useCallback } from "react";
 import "./App.css";
 import Income from "../Components/Income";
 import Expense from "../Components/Expense";
 import Target from "../Components/Target";
 import Transfer from "../Components/Transfer";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,22 +14,23 @@ const Budget = () => {
   const [totalincomeAmount, setTotalIncomeAmount] = useState<number>(0); //pass to another component
   const [totalExpenses, setTotalExpenses] = useState<number>(0);
   const [currentBalanceValue, setCurrentBalanceValue] = useState<number>(0);
-  const transToSaving = (transfer: number) => {
+  const transToSaving =useCallback ((transfer: number) => {
     //child to parent transfer value from transfer.tsx
     setSendtarget(transfer); //to be updated-update the state
     //App have target value
-  };
+  },[]);
   //render on screen=using useState
-  const getIncomesTotals = (amount: number) => {
+  const getIncomesTotals = useCallback((amount: number) => {
     //App have Total of Incomes
 
     setTotalIncomeAmount(amount);
-  };
-  const getExpenseAmount = (amount: number) => {
+  },[]);
+  const getExpenseAmount =useCallback( (amount: number) => {
     //App have total of Expenses
 
     setTotalExpenses(amount);
-  };
+  },[]);
+  console.log("hello")
 
   const getBalance = totalincomeAmount - totalExpenses - sendTarget;
   const getBalanceForSaving = totalincomeAmount - totalExpenses + sendTarget;
@@ -51,6 +51,7 @@ const Budget = () => {
         getCurrentBalance={getBalance}
       />
       {/*pass it to transfer.tsx*/}
+      
       <ToastContainer />
     </div>
   );

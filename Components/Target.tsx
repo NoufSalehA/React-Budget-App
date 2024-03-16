@@ -2,21 +2,20 @@ import React, { useState, FormEvent, ChangeEvent } from "react"; //have transfer
 import { Toast } from "react-toastify/dist/components";
 import { toast } from "react-toastify";
 type TargetPropsType = {
-  getCurrentBalance: () => number;
-  sendToTarget: number;
+  getCurrentBalance1: number;
+  onGetTrans: (transfer: number) => void;
 };
 const Target = (props: TargetPropsType) => {
   const [target, setTarget] = useState<number>(0);
   const [submitted, setSubmitted] = useState<boolean>(false);
-
   const handelsubmit = (event: FormEvent) => {
     event.preventDefault();
     setSubmitted(true);
 
     toast.success("Target Added");
   };
-  const getCurrentSaving = props.getCurrentBalance();
-  const percentage = ((props.sendToTarget / target) * 100).toFixed(0);
+
+  const percentage = ((props.getCurrentBalance1 / target) * 100).toFixed(0);
 
   return (
     <div className="my-box">
@@ -36,12 +35,11 @@ const Target = (props: TargetPropsType) => {
             Reset
           </button>
         </div>
-
         <div className="saving">
-          <p>Current Saving: {props.sendToTarget}</p>
+          <p>Current Saving: {props.getCurrentBalance1}</p>
           <p>Target :{submitted && target} </p>
           <p>
-            <progress max={target} value={props.sendToTarget}></progress>
+            <progress max={target} value={props.getCurrentBalance1}></progress>
             <p>{percentage}%</p>
           </p>
         </div>

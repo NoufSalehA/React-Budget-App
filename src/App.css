@@ -123,3 +123,19 @@ label {
   font-size: 10px;
   color: rgb(104, 104, 104);
 }
+.navigation{
+
+  display: flex;
+  justify-content: center;
+gap:1rem;
+
+  
+}
+.my-link{
+  text-decoration: none;
+  font-size: 1.5rem;
+  color:#040404;
+}
+.my-link:hover{
+  color: rgb(247, 247, 243);
+}

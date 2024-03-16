@@ -6,6 +6,7 @@ type TransTypes = {
   GetTotalOfIncomes: number;
   GetTheExpensesTotal: number;
   TheTargetvalue: number;
+  getCurrentBalance: number;
 };
 const Transfer = (props: TransTypes) => {
   const [transfer, setTransfer] = useState(0); //store
@@ -18,16 +19,13 @@ const Transfer = (props: TransTypes) => {
     }
   };
   const currentBalanceValue: number =
-    props.GetTotalOfIncomes -
-    props.GetTheExpensesTotal -
-    props.TheTargetvalue;
-    console.log(currentBalanceValue)
+    props.GetTotalOfIncomes - props.GetTheExpensesTotal - props.TheTargetvalue; //transfer props
+
   return (
     <div className="transfer">
       <form onSubmit={handelsubmit} action="action" className="my-transfer">
         <label className="balance">
-          Current Balance :{" "}
-          {currentBalanceValue}
+          Current Balance : {props.getCurrentBalance}
         </label>
         <label className="balance-1">Transfer to Saving Account</label>
         <input
